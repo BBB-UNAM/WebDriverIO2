@@ -9,11 +9,13 @@ describe('My Login application', () => {
         await LoginPage.validateLogin();
     });
 
-    it.only('Verify Sign Up', async () => {
+    it('Verify Sign Up', async () => {
         await (await LoginPage.loginButton).isDisplayed();
         await (await LoginPage.loginButton).click();
         await (await LoginPage.signUpTab).click();
         await LoginPage.signUp("picassoa12@gmail.com","qwertyuiop");
+
+        await LoginPage.validateSignUp();
     });
 
 })

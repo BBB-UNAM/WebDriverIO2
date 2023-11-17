@@ -21,6 +21,7 @@ class LoginPage extends Page {
     public get passSignUp () { return $('~input-password'); }
     public get repeatPassSignUp () { return $('~input-repeat-password'); }
     public get btnSighUp () { return $('~button-SIGN UP'); }
+    public get SignUpMessage () { return $('android=new UiSelector().resourceId("android:id/message")') }
     //---------------------------------------Methods-----------------------------------------
     public async login (username: string, password: string) {
         //Steps to login to the app
@@ -39,7 +40,7 @@ class LoginPage extends Page {
 
         const message = await (await this.successMesage).getText(); //get the content of the message.
 
-        await assert.strictEqual("You are logged in!".includes(message),true,"Message not displayed"); //hard assert example
+        await assert.strictEqual("You are logged in!".includes(message),true,"Message not correct"); //hard assert example
 
         try { //soft assert example
             await assert.strictEqual("You are logged in!".includes(message),true);
@@ -56,6 +57,21 @@ class LoginPage extends Page {
         await (await this.passSignUp).setValue(password);
         await (await this.repeatPassSignUp).setValue(password);
         await (await this.btnSighUp).click();
+    }
+
+    public async validateSignUp(){
+        (await this.SignUpMessage).waitForDisplayed({ //wait a maximum of five seconds to succed message is displayed
+            timeout: 5000,                            // with intervals of two seconds.
+            interval: 500, 
+            reverse: false,
+            timeoutMsg: 'El elemento no existió en el tiempo especificado'
+        });
+
+        const message = await (await this.successMesage).getText(); //get the content of the message.
+        console.log(message);
+
+        await assert.strictEqual("You successfully signed up!".includes(message),true,"Message not correct"); //hard assert example
+        (await this.okButton).click(); // click on OK button
     }
 }
 
