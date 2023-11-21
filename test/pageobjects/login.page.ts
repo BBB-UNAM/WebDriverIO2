@@ -22,6 +22,7 @@ class LoginPage extends Page {
     public get repeatPassSignUp () { return $('~input-repeat-password'); }
     public get btnSighUp () { return $('~button-SIGN UP'); }
     public get SignUpMessage () { return $('android=new UiSelector().resourceId("android:id/message")') }
+    public get wrongPassMessage () {return $('//android.widget.TextView[@text="Please enter the same password"]')}
     //---------------------------------------Methods-----------------------------------------
     public async login (username: string, password: string) {
         //Steps to login to the app
@@ -57,6 +58,27 @@ class LoginPage extends Page {
         await (await this.passSignUp).setValue(password);
         await (await this.repeatPassSignUp).setValue(password);
         await (await this.btnSighUp).click();
+    }
+
+    public async signUpWrong(username: string, password: string){
+        await (await this.signUpTab).click();
+        await (await this.emailSignUp).setValue(username);
+        await (await this.passSignUp).setValue(password);
+        await (await this.repeatPassSignUp).setValue("asdfghjkl");
+        await (await this.btnSighUp).click();
+    }
+
+    public async validateSignUpWrong(){
+        (await this.wrongPassMessage).waitForDisplayed({ //wait a maximum of five seconds to succed message is displayed
+            timeout: 5000,                            // with intervals of two seconds.
+            interval: 500, 
+            reverse: false,
+            timeoutMsg: 'El texto del password no se muestra'
+        });
+
+        const message = await (await this.wrongPassMessage).getText(); 
+        console.log(message);
+        await assert.strictEqual("Please enter the same password".includes(message),true,"Message not correct"); 
     }
 
     public async validateSignUp(){
