@@ -26,9 +26,9 @@ class LoginPage extends Page {
     //---------------------------------------Methods-----------------------------------------
     public async login (username: string, password: string) {
         //Steps to login to the app
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await (await this.inputUsername).setValue(username);
+        await (await this.inputPassword).setValue(password);
+        await (await this.btnSubmit).click();
     }
 
     public async validateLogin(){
