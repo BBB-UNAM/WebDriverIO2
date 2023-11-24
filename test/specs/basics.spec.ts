@@ -1,3 +1,4 @@
+import HomePage from '../pageobjects/home.page.js';
 import LoginPage from '../pageobjects/login.page.js'
 import allureReporter from '@wdio/allure-reporter'
 
@@ -49,6 +50,24 @@ describe('My Login application', () => {
 
         await LoginPage.validateSignUpWrong();
         allureReporter.addStep("3 - Validate wrong Sign Up"); 
+    });
+
+    it('Validate Home tab', async () => {
+        allureReporter.addFeature('Validate Home tab');
+
+        await (await LoginPage.homeButton).isDisplayed();
+        await (await LoginPage.homeButton).click();
+        allureReporter.addStep("1 - Home screen opened");
+
+        await HomePage.validateHomeMessage();
+        allureReporter.addStep("2 - Home message validated");
+        await HomePage.validateSupportMessage();
+        allureReporter.addStep("3 - Support message validated");
+        await HomePage.validateWebdriverLetter();
+        allureReporter.addStep("4 - Web driver letter validated");
+        await HomePage.validateIcons();
+        allureReporter.addStep("5 - Icons Validated");
+
     });
 
 })
