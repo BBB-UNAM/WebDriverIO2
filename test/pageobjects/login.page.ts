@@ -78,7 +78,7 @@ class LoginPage extends Page {
 
         const message = await (await this.wrongPassMessage).getText(); 
         console.log(message);
-        await assert.strictEqual("Please enter the same password".includes(message),true,"Message not correct"); 
+        await assert.strictEqual("Please enter the same password2".includes(message),true,"Message not correct"); 
     }
 
     public async validateSignUp(){
