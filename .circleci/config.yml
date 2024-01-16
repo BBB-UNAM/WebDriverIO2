@@ -1,38 +1,38 @@
 version: 2.1
 jobs:
-  build:
-    docker:
-      - image: cimg/base:2024.01
-      
-    environment:
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
-    steps:
-      # install nesessary dependencies
-      - run: sudo apt update
-      - run: sudo apt install nodejs
-      - run: sudo apt install npm
-      - run: npm install n
-      - run: npm install n latest
-      - run: sudo apt install openjdk-17-jdk
-      - run: npm i appium
-      - run: npm i android-platform-tools
-      - run: npm install appium-doctor
-      # configuration of dependecies environment
-      #- run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
-      #- run: export PATH=$PATH:$JAVA_HOME/bin
-      #- run: sudo update-alternatives --config java
-      
-      #- run: source ~/.bashrc 
-      # see correct dependeci installed
-      - run: echo $JAVA_HOME
-      - run: echo $ANDROID_HOME
-      #- run: echo $PATH
-      - run: java --version
-      - run: node --version
-      - run: npm --version
-      - run: npx appium-doctor
+  build:
+    docker:
+      - image: cimg/base:2024.01
+      
+    environment:
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
+    steps:
+      # install nesessary dependencies
+      - run: sudo apt update
+      - run: sudo apt install nodejs
+      - run: sudo apt install npm
+      - run: npm install n
+      - run: npm install n latest
+      - run: sudo apt install openjdk-17-jdk
+      - run: npm i appium
+      - run: npm i android-platform-tools
+      - run: npm install appium-doctor
+      # configuration of dependecies environment
+      #- run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
+      #- run: export PATH=$PATH:$JAVA_HOME/bin
+      #- run: sudo update-alternatives --config java
+      
+      #- run: source ~/.bashrc 
+      # see correct dependeci installed
+      - run: echo $JAVA_HOME
+      - run: echo $ANDROID_HOME
+      #- run: echo $PATH
+      - run: java --version
+      - run: node --version
+      - run: npm --version
+      - run: npx appium-doctor
 runworkflows:
-  version: 2
-  scheduled-workflow-android:
-    jobs:
-    - build
+  version: 2
+  scheduled-workflow-android:
+    jobs:
+    - build
