@@ -18,6 +18,7 @@ jobs:
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            nvm --version
       - run: sudo apt install openjdk-17-jdk
       - run: nvm --version
       - run: npm i appium
