@@ -14,7 +14,7 @@ jobs:
       - run: sudo apt install npm
       - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
       - run: sudo apt install openjdk-17-jdk
-      - run: ls -l $HOME
+      - run: ls -l $HOME/project
       - run: npm i appium
       - run: npm i android-platform-tools
       - run: npm install appium-doctor
