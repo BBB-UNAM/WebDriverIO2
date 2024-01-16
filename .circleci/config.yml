@@ -12,10 +12,10 @@ jobs:
       - run: sudo apt update
       - run: sudo apt install nodejs
       - run: sudo apt install npm
-      - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
       - run:
-          name: Set up nvm
+          name: install and Set up nvm
           command: |
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       - run: sudo apt install openjdk-17-jdk
