@@ -19,6 +19,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm --version
+            nvm use 16
       - run: sudo apt install openjdk-17-jdk
       - run: npm i appium
       - run: npm i android-platform-tools
