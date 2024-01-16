@@ -20,7 +20,6 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm --version
       - run: sudo apt install openjdk-17-jdk
-      - run: nvm --version
       - run: npm i appium
       - run: npm i android-platform-tools
       - run: npm install appium-doctor
