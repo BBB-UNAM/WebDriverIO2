@@ -6,8 +6,7 @@ jobs:
       
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
-      NVM_DIR: "$HOME/.nvm"
-      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+      NVM_DIR: NVM_DIR="$HOME/.nvm"
     steps:
       # install nesessary dependencies hola
       - run: sudo apt update
