@@ -6,7 +6,7 @@ jobs:
       
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
-      NVM_DIR: NVM_DIR="$HOME/.nvm"
+      #NVM_DIR: NVM_DIR="$HOME/.nvm"
     steps:
       # install nesessary dependencies hola
       - run: sudo apt update
@@ -14,7 +14,7 @@ jobs:
       - run: sudo apt install npm
       - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
       - run: sudo apt install openjdk-17-jdk
-      - run: nvm use 16
+      - run: ls -l $HOME
       - run: npm i appium
       - run: npm i android-platform-tools
       - run: npm install appium-doctor
