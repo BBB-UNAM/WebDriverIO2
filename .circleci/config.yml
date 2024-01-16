@@ -13,8 +13,13 @@ jobs:
       - run: sudo apt install nodejs
       - run: sudo apt install npm
       - run: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+      - run:
+          name: Set up nvm
+          command: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
       - run: sudo apt install openjdk-17-jdk
-      - run: /home/circleci/.nvm use 16
+      - run: nvm --version
       - run: npm i appium
       - run: npm i android-platform-tools
       - run: npm install appium-doctor
