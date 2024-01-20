@@ -7,6 +7,7 @@ jobs:
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
       NVM_DIR: /home/circleci/.nvm
+      ANDROID_HOME: 
     steps:
       # install nesessary dependencies holaa
       - run: sudo apt update
@@ -24,6 +25,7 @@ jobs:
             npm install appium
             sudo apt install openjdk-17-jdk
             npm install android-platform-tools
+            echo $ANDROID_HOME
             npm install appium-doctor
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
