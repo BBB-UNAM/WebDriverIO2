@@ -6,7 +6,7 @@ jobs:
       
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
-      #NVM_DIR: /home/circleci/.nvm
+      NVM_DIR: /home/circleci/.nvm
     steps:
       # install nesessary dependencies holaa
       - run: sudo apt update
