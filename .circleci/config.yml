@@ -21,8 +21,9 @@ jobs:
             nvm --version
             nvm install 16
             nvm use 16
+            npm install appium
       - run: sudo apt install openjdk-17-jdk
-      - run: npm install appium
+      #- run: npm install appium
       - run: npm i android-platform-tools
       - run: npm install appium-doctor
       # configuration of dependecies environment
