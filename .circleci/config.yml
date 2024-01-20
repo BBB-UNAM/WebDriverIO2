@@ -25,6 +25,7 @@ jobs:
             npm install appium
             sudo apt install openjdk-17-jdk
             npm install android-platform-tools
+      - run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
       #- run: npm install android-platform-tools
