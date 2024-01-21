@@ -25,7 +25,6 @@ jobs:
             npm install appium
             sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
-            npm install har-validator@5.1.5
             npm update
             npm install android-platform-tools
       #- run: npm install android-platform-tools
