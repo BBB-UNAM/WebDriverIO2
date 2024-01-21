@@ -10,12 +10,15 @@ jobs:
       ANDROID_HOME: 
     steps:
       # install nesessary dependencies holaa
-      - run: sudo apt update
-      - run: sudo apt install nodejs
-      - run: sudo apt install npm
+      #- run: sudo apt update
+      #- run: sudo apt install nodejs
+      #- run: sudo apt install npm
       - run:
           name: install Main dependecies
           command: |
+            sudo apt update
+            sudo apt install nodejs
+            sudo apt install npm
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -25,7 +28,6 @@ jobs:
             npm install appium
             sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
-            npm update
             npm install android-platform-tools
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
