@@ -24,8 +24,9 @@ jobs:
             nvm use 16
             npm install appium
             sudo apt install openjdk-17-jdk
+            command: echo -e "\e[31m ************ Install Android tools ************ \e[0m"
             npm install android-platform-tools
-      - run: npm install android-platform-tools
+      #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
       #- run: npm install android-platform-tools
