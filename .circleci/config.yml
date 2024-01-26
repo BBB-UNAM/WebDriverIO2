@@ -7,7 +7,7 @@ jobs:
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
       NVM_DIR: /home/circleci/.nvm
-      ANDROID_HOME: 
+      ANDROID_HOME: /$HOME/Library/Android/sdk
     steps:
       # install nesessary dependencies holaa
       #- run: sudo apt update
