@@ -28,7 +28,7 @@ jobs:
             nvm use 16
             npm install appium
             sudo apt install openjdk-17-jdk
-            echo -e "\e[31m ************ Install Android tools ************* \e[0m"
+            echo -e "\e[31m ************ Install Android tools ************ \e[0m"
             sudo apt-get -y install android-sdk-build-tools
       - run:
           name: check paths
