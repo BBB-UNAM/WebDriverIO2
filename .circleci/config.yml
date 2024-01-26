@@ -32,8 +32,6 @@ jobs:
       - run:
           name: check paths
           command: |
-            cd /usr/lib/android-sdk
-            ls -l
             wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
             unzip commandlinetools-linux-6609375_latest.zip
             echo y | ./tools/bin/sdkmanager --install "platform-tools" "tools" "build-tools;30.0.3" "platforms;android-30"
