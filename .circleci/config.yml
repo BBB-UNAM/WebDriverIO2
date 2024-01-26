@@ -29,9 +29,7 @@ jobs:
             sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************* \e[0m"
             sudo apt-get -y install android-sdk-build-tools
-            echo $ANDROID_HOME
-            cd /usr/lib/android-sdk
-            ls -l
+            sdkmanager
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
@@ -42,7 +40,7 @@ jobs:
       #- run: export PATH=$PATH:$JAVA_HOME/bin
       #- run: sudo update-alternatives --config java
       
-      - run: sdkmanager
+      # - run: sdkmanager
       # see correct dependeci installed
       - run: echo $JAVA_HOME
       - run: echo $ANDROID_HOME
