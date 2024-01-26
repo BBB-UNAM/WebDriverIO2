@@ -42,7 +42,7 @@ jobs:
       #- run: export PATH=$PATH:$JAVA_HOME/bin
       #- run: sudo update-alternatives --config java
       
-      - run: emulator -avd -list-avds
+      - run: sdkmanager
       # see correct dependeci installed
       - run: echo $JAVA_HOME
       - run: echo $ANDROID_HOME
