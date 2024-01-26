@@ -34,7 +34,13 @@ jobs:
           command: |
             cd /usr/lib/android-sdk
             ls -l
-            sdkmanager
+            wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+            unzip commandlinetools-linux-6609375_latest.zip
+            echo y | ./tools/bin/sdkmanager --install "platform-tools" "tools" "build-tools;30.0.3" "platforms;android-30"
+      - run:
+          name: Install Android System Image
+          command: |
+            echo y | ./tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64"
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
