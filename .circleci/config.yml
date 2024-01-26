@@ -30,10 +30,12 @@ jobs:
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
             sudo apt-get -y install android-sdk-build-tools
       - run:
-          name: Check paths
+          name: Install command line tools
           command: |
-            cd /usr/lib/android-sdk/platforms/android-23
+            https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+            unzip commandlinetools-linux-6609375_latest.zip
             ls -l
+            pwd
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
