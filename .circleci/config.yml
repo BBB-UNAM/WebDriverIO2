@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Install command line tools
           command: |
-            https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+            wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
             unzip commandlinetools-linux-6609375_latest.zip
             ls -l
             pwd
