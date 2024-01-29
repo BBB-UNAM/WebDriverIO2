@@ -5,7 +5,7 @@ jobs:
       - image: cimg/base:2024.01
       
     environment:
-      JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64/
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
       NVM_DIR: /home/circleci/.nvm
       ANDROID_HOME: /usr/lib/android-sdk
     steps:
@@ -26,7 +26,7 @@ jobs:
             nvm install 16
             nvm use 16
             npm install appium
-            sudo apt install openjdk-11-jdk
+            sudo apt install openjdk-17-jdk
             sudo apt-get -y install jaxb
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"   
             cd /usr/lib/jvm/
@@ -34,15 +34,12 @@ jobs:
       - run:
           name: install android SDK
           command: |
-            wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
-            unzip tools_r25.2.3-linux.zip -d sdk
-            cd sdk/tools
-            echo y | ./android update sdk --no-ui
-
+            wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+            unzip commandlinetools-linux-6609375_latest.zip
       - run:
           name: install android system
           command: |
-            echo y | ./sdk/tools/bin/sdkmanager "system-images;android-33;google_apis;x86_64"
+            echo y | ./tools/bin/sdkmanager "platform-tools" "tools" "build-tools;30.0.3" "platforms;android-30"
 
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
