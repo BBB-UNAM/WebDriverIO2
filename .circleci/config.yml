@@ -27,6 +27,7 @@ jobs:
             nvm use 16
             npm install appium
             sudo apt install openjdk-17-jdk
+            sudo apt-get -y install jaxb
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"            
       - run:
           name: install android SDK
