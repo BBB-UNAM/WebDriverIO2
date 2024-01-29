@@ -29,7 +29,6 @@ jobs:
             sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
             sudo apt-get -y install android-sdk
-            sdkmanager
       - run:
           name: test sdk
           command: |
