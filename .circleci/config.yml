@@ -34,6 +34,35 @@ jobs:
           command: |
             cd /usr/lib/android-sdk/
             ls -l
+      - run:
+          name: check build-tools
+          command: |
+            cd /usr/lib/android-sdk/build-tool
+            ls -l
+
+      - run:
+          name: check licenses
+          command: |
+            cd /usr/lib/android-sdk/licenses
+            ls -l
+
+      - run:
+          name: check platforms
+          command: |
+            cd /usr/lib/android-sdk/platforms
+            ls -l
+
+      - run:
+          name: check platform-tools
+          command: |
+            cd /usr/lib/android-sdk/platform-tools
+            ls -l
+
+      - run:
+          name: check tools
+          command: |
+            cd /usr/lib/android-sdk/tools
+            ls -l
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
