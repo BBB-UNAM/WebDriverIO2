@@ -39,7 +39,7 @@ jobs:
       - run:
           name: install android system
           command: |
-            echo y | ./tools/bin/sdkmanager "platform-tools" "tools" "build-tools;30.0.3" "platforms;android-30"
+            echo y | ./tools/bin//sdkmanager "system-images;android-30;google_apis;x86_64"
 
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
