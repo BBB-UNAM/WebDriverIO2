@@ -5,7 +5,7 @@ jobs:
       - image: cimg/base:2024.01
       
     environment:
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
+      JAVA_HOME: /usr/lib/jvm/java-9-openjdk-amd64/
       NVM_DIR: /home/circleci/.nvm
       ANDROID_HOME: /usr/lib/android-sdk
     steps:
@@ -26,9 +26,11 @@ jobs:
             nvm install 16
             nvm use 16
             npm install appium
-            sudo apt install openjdk-17-jdk
+            sudo apt install openjdk-9-jdk
             sudo apt-get -y install jaxb
-            echo -e "\e[31m ************ Install Android tools ************ \e[0m"            
+            echo -e "\e[31m ************ Install Android tools ************ \e[0m"   
+            cd /usr/lib/jvm/
+            ls -l
       - run:
           name: install android SDK
           command: |
