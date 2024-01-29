@@ -34,6 +34,7 @@ jobs:
           command: |
             cd /usr/lib/android-sdk
             ls -l
+            sdkmanager
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
