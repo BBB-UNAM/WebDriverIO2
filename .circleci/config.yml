@@ -28,14 +28,11 @@ jobs:
             npm install appium
             sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
-            sudo apt-get -y install android-sdk-build-tools
+            sudo apt-get -y install android-sdk
       - run:
-          name: Install command line tools
+          name: test sdk
           command: |
-            wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
-            sudo unzip commandlinetools-linux-6609375_latest.zip -d /usr/lib/android-sdk/cmdline-tools
-            cd /usr/lib/android-sdk/cmdline-tools/tools/bin/
-            ls -l
+            sdkmanager --version
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
