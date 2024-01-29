@@ -34,7 +34,7 @@ jobs:
             wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
             unzip tools_r25.2.3-linux.zip -d sdk
             cd sdk/tools
-            ./android update sdk --no-ui
+            echo y | ./android update sdk --no-ui
 
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
