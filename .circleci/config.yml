@@ -16,9 +16,9 @@ jobs:
       - run:
           name: install Main dependecies
           command: |
-            apt update
-            apt install nodejs
-            apt install npm
+            sudo apt update
+            sudo apt install nodejs
+            sudo apt install npm
             curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -26,13 +26,13 @@ jobs:
             nvm install 16
             nvm use 16
             npm install appium
-            apt install openjdk-17-jdk
+            sudo apt install openjdk-17-jdk
             echo -e "\e[31m ************ Install Android tools ************ \e[0m"
-            apt-get -y install android-sdk
+            sudo apt-get -y install android-sdk
       - run:
           name: test sdk
           command: |
-            sdkmanager
+            /usr/lib/android-sdk/tools/bin/sdkmanager
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
