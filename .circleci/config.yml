@@ -36,7 +36,7 @@ jobs:
             cd sdk/tools
             echo y | ./android update sdk --no-ui
 
-       - run:
+      - run:
           name: install android system
           command: |
             echo y | .sdk/tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64"
