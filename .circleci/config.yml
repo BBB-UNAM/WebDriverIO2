@@ -32,7 +32,8 @@ jobs:
       - run:
           name: test sdk
           command: |
-            la -l /usr/lib/android-sdk/
+            cd /usr/lib/android-sdk/tools/bin
+            ls -l
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
