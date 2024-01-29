@@ -35,11 +35,6 @@ jobs:
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
             sudo unzip commandlinetools-linux-6609375_latest.zip -d /usr/lib/android-sdk/cmdline-tools
-            cd /usr/lib/android-sdk/cmdline-tools
-            ls -l
-      - run:
-          name: check instalation
-          command: |
             sdkmanager
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
