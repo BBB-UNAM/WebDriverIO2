@@ -34,7 +34,8 @@ jobs:
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
             sudo unzip commandlinetools-linux-6609375_latest.zip -d /usr/lib/android-sdk/cmdline-tools
-            sdkmanager
+            cd /usr/lib/android-sdk/cmdline-tools/tools/bin/
+            ls -l
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
       #- run: npm install appium
