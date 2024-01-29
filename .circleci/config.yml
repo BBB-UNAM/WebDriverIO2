@@ -7,7 +7,7 @@ jobs:
     environment:
       JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
       NVM_DIR: /home/circleci/.nvm
-      ANDROID_HOME: /usr/lib/android-sdk/tools/bin
+      ANDROID_HOME: /usr/lib/android-sdk
     steps:
       # install nesessary dependencies holaa
       #- run: sudo apt update
@@ -32,8 +32,8 @@ jobs:
       - run:
           name: test sdk
           command: |
-            cd /usr/lib/android-sdk
-            ls -l
+            echo 'export PATH=$PATH:$ANDROID_HOME/tools/bin' >> $BASH_ENV
+            source $BASH_ENV
             sdkmanager
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
