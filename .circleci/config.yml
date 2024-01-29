@@ -61,7 +61,7 @@ jobs:
       - run:
           name: check tools
           command: |
-            cd /usr/lib/android-sdk/tools
+            cd /usr/lib/android-sdk/tools/bin
             ls -l
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
