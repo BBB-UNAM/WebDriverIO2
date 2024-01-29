@@ -34,8 +34,9 @@ jobs:
       - run:
           name: install android SDK
           command: |
-            wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
-            unzip commandlinetools-linux-6609375_latest.zip
+            wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip?hl=es-419
+            unzip commandlinetools-linux-11076708_latest.zip
+            ls -l
       - run:
           name: install android system
           command: |
