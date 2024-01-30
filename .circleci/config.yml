@@ -46,7 +46,8 @@ jobs:
       - run:
           name: install android emulator
           command: |
-            ./android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
+            ./android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-33;google_apis;x86_64"
+            ./android-sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name "PIXEL" --package "system-images;android-33;google_apis;x86_64" --tag "google_apis" --abi "x86_64" --device "pixel_xl"
             
             
       #- run: npm install android-platform-tools
