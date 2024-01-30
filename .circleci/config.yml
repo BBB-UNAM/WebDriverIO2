@@ -16,8 +16,7 @@ jobs:
       - android/start-emulator:
           avd-name: myavd
           no-window: true
-          restore-gradle-cache-post-emulator-launch: true
-          restore-gradle-cache-prefix: v1a
+          restore-gradle-cache-post-emulator-launch: false
       - android/run-tests:
           test-command: yarn install
       - android/save-gradle-cache:
