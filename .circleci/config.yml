@@ -34,13 +34,13 @@ jobs:
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
             sudo unzip commandlinetools-linux-11076708_latest.zip -d /usr/lib/android-sdk
-            cd ${ANDROID_HOME}/cmdline-tools/bin/sdkmanager
+            cd ${ANDROID_HOME}/cmdline-tools/bin/
             ls -l
       - run:
           name: install android emulator
           command: |
             echo y | .${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
-            cd ${ANDROID_HOME}/cmdline-tools/bin/sdkmanager
+            cd ${ANDROID_HOME}/cmdline-tools/bin/
             ls -l
       - run:
           name: See sdkmanager options
