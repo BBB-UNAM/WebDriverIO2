@@ -41,7 +41,7 @@ jobs:
             mkdir ./android-sdk/platform-tools
             mkdir ./android-sdk/platforms  
             cd android-sdk/cmdline-tools/latest
-            ls -l
+            pwd
       - run:
           name: install android emulator
           command: |
