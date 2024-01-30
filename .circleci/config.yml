@@ -41,7 +41,7 @@ jobs:
       - run:
           name: See sdkmanager options
           command: |
-            ./cmdline-tools/bin/sdkmanager --list
+            ./cmdline-tools/bin/sdkmanager --list --sdk_root=cmdline-tools "cmdline-tools;latest"
 
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
