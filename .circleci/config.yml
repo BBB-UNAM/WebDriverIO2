@@ -42,7 +42,7 @@ jobs:
       - run:
           name: acceptar licencia
           command: |
-            echo "y" | ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+            ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses <<< "y"
       - run:
           name: install android emulator
           command: |
