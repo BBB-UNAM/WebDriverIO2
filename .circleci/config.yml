@@ -1,9 +1,8 @@
 android_run_cucumber:
     macos:
-      xcode: "14.2.0"
+      xcode: "9.4.0"
     shell: /bin/bash --login -eo pipefail
     working_directory: /tmp/workspace
-
     steps:
       - checkout
       - run:
