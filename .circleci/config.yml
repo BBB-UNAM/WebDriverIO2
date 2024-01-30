@@ -37,7 +37,7 @@ jobs:
       - run:
           name: install android emulator
           command: |
-            echo y | ./${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
+            echo y | .${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
       - run:
           name: See sdkmanager options
           command: |
