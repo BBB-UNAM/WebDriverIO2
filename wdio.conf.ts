@@ -68,8 +68,8 @@ export const config: Options.Testrunner = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
-        'appium:deviceName': 'Pixel_XL_API_33',
-        'appium:platformVersion': '13',
+        'appium:deviceName': 'CircleCiDevice',
+        'appium:platformVersion': '10',
         'appium:automationName': 'UiAutomator2',
         'appium:app': __dirname + '/app/Android-NativeDemoApp-0.4.0.apk',
         'appium:appPackage': 'com.wdiodemoapp', //in appium inspector is displayed as "Currently Active App ID"
