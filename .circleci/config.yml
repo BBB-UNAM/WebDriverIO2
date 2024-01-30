@@ -18,7 +18,7 @@ jobs:
           no-window: true
           restore-gradle-cache-post-emulator-launch: false
       - android/run-tests:
-          test-command: yarn install
+          test-command: "yarn install"
       - android/save-gradle-cache:
           cache-prefix: v1a
 workflows:
