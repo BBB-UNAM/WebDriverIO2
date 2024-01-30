@@ -1,75 +1,47 @@
 version: 2.1
 jobs:
   build:
-    docker:
-      - image: cimg/base:2024.01
+    macos:  # indicate that we are using the macOS executor
+      xcode: 14.2.0
     environment:
-      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64/
-      NVM_DIR: /home/circleci/.nvm
-      ANDROID_HOME: /usr/lib/android-sdk
+      JAVA_HOME: /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
+      ANDROID_SDK_ROOT: /usr/local/Caskroom/android-sdk/4333796
     steps:
-      # install nesessary dependencies holaa
-      #- run: sudo apt update
-      #- run: sudo apt install nodejs
-      #- run: sudo apt install npm
-      - run:
-          name: install Main dependecies
+      - checkout
+      - run: npm install -g react-native-cli
+      - run: 
+          name: Install Android sdk
           command: |
-            sudo apt update
-            sudo apt install nodejs
-            sudo apt install npm
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm --version
-            nvm install 16
-            nvm use 16
-            npm install appium
-            sudo apt install openjdk-17-jdk
-            sudo apt-get -y install jaxb
-            echo -e "\e[31m ************ Install Android tools ************ \e[0m"
-      - run:
-          name: install android SDK
+            brew install --cask homebrew/cask-versions/adoptopenjdk8
+            brew install gradle
+            brew install android-sdk
+            brew install android-platform-tools
+            brew install haxe
+      - run: 
+          name: Create Emulator
           command: |
-            wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-            unzip commandlinetools-linux-11076708_latest.zip -d android-sdk
-            mkdir ./android-sdk/cmdline-tools/latest
-            mv ./android-sdk/cmdline-tools/bin ./android-sdk/cmdline-tools/latest
-            mv ./android-sdk/cmdline-tools/lib ./android-sdk/cmdline-tools/latest
-            mv ./android-sdk/cmdline-tools/*.* ./android-sdk/cmdline-tools/latest
-            mkdir ./android-sdk/platform-tools
-            mkdir ./android-sdk/platforms
+            export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
+            export PATH=$JAVA_HOME/bin:$PATH
+            echo "y" | sdkmanager --install 'system-images;android-28;google_apis;x86_64'
+            echo "no" | avdmanager create avd -n test_device -k 'system-images;android-28;google_apis;x86_64' --force
+            emulator -list-avds
+            ls -la /Users/$USER/.android/avd
+            sdkmanager "platform-tools" "platforms;android-28" "extras;intel;Hardware_Accelerated_Execution_Manager"
       - run:
-          name: acceptar licencia
+          name: Starting emulator in background
+          command: export ANDROID_AVD_HOME=/Users/$USER/.android/avd && export ANDROID_HOME=$ANDROID_SDK_ROOT && $ANDROID_HOME/emulator/emulator -avd test_device -skin 1080x1920 -memory 1024 -engine qemu2 -netfast -no-audio -no-snapshot -gpu auto
+          background: true
+      - run: 
+          name: Starting Emulator
           command: |
-            (yes | ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses) || true
-      - run:
-          name: install android emulator
+            adb wait-for-device
+            adb devices
+            echo "Emulator started"
+      - run: 
+          name: Starting Test
           command: |
-            ./android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-33;google_apis;x86_64"
-            ./android-sdk/cmdline-tools/latest/bin/avdmanager --verbose create avd --force --name "PIXEL" --package "system-images;android-33;google_apis;x86_64" --tag "google_apis" --abi "x86_64" --device "pixel_xl"
-            
-            
-      #- run: npm install android-platform-tools
-      #- run: sudo apt install openjdk-17-jdk
-      #- run: npm install appium
-      #- run: npm install android-platform-tools
-      #- run: npm install appium-doctor
-      # configuration of dependecies environment
-      #- run: export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/bin/java
-      #- run: export PATH=$PATH:$JAVA_HOME/bin
-      #- run: sudo update-alternatives --config java
-      
-      # - run: sdkmanager
-      # see correct dependeci installed
-      - run: echo $JAVA_HOME
-      - run: echo $ANDROID_HOME
-      #- run: echo $PATH
-      - run: java --version
-      - run: node --version
-      - run: npm --version
-      - run: npx appium-doctor
-runworkflows:
+            yarn android
+workflows:
   version: 2
   scheduled-workflow-android:
     jobs:
