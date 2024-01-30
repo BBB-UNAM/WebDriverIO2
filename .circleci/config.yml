@@ -33,7 +33,7 @@ jobs:
           name: install android SDK
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-            unzip commandlinetools-linux-11076708_latest.zip -d /usr/lib/android-sdk
+            sudo unzip commandlinetools-linux-11076708_latest.zip -d /usr/lib/android-sdk
       - run:
           name: install android emulator
           command: |
