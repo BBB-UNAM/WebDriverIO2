@@ -38,10 +38,7 @@ jobs:
           name: install android emulator
           command: |
             echo y | ./cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64" --sdk_root=cmdline-tools "cmdline-tools;latest"
-      - run:
-          name: See sdkmanager options
-          command: |
-            ./cmdline-tools/bin/sdkmanager --list --sdk_root=cmdline-tools "cmdline-tools;latest"
+            ./cmdline-tools/bin/sdkmanager --list
 
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
