@@ -34,6 +34,8 @@ jobs:
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
             unzip commandlinetools-linux-11076708_latest.zip -d android-sdk
+            mkdir ./android-sdk/cmdline-tools/latest
+            cd android-sdk/cmdline-tools/latest
             ls -l
       - run:
           name: install android emulator
