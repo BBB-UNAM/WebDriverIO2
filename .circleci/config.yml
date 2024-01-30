@@ -35,6 +35,11 @@ jobs:
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
             unzip commandlinetools-linux-11076708_latest.zip -d android-sdk
             mkdir ./android-sdk/cmdline-tools/latest
+            mv ./android-sdk/cmdline-tools/bin ./android-sdk/cmdline-tools/latest
+            mv ./android-sdk/cmdline-tools/lib ./android-sdk/cmdline-tools/latest
+            mv ./android-sdk/cmdline-tools/*.* ./android-sdk/cmdline-tools/latest
+            mkdir ./android-sdk/platform-tools
+            mkdir ./android-sdk/platforms  
             cd android-sdk/cmdline-tools/latest
             ls -l
       - run:
