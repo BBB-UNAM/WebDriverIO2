@@ -1,48 +1,26 @@
-version: 2.1
+version: '2.1'
+orbs:
+  android: circleci/android@2.0
 jobs:
-  build:
-    macos:  # indicate that we are using the macOS executor
-      xcode: 14.2.0
-    environment:
-      JAVA_HOME: /Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home
-      ANDROID_SDK_ROOT: /usr/local/Caskroom/android-sdk/4333796
+  test:
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2021.10.1
     steps:
       - checkout
-      - run: npm install -g react-native-cli
-      - run: 
-          name: Install Android sdk
-          command: |
-            brew install --cask homebrew/cask-versions/adoptopenjdk8
-            brew install gradle
-            brew install android-sdk
-            brew install android-platform-tools
-            brew install haxe
-      - run: 
-          name: Create Emulator
-          command: |
-            export HAXE_STD_PATH="/opt/homebrew/lib/haxe/std"
-            export PATH=$JAVA_HOME/bin:$PATH
-            echo "y" | sdkmanager --install 'system-images;android-28;google_apis;x86_64'
-            echo "no" | avdmanager create avd -n test_device -k 'system-images;android-28;google_apis;x86_64' --force
-            emulator -list-avds
-            ls -la /Users/$USER/.android/avd
-            sdkmanager "platform-tools" "platforms;android-28" "extras;intel;Hardware_Accelerated_Execution_Manager"
-      - run:
-          name: Starting emulator in background
-          command: export ANDROID_AVD_HOME=/Users/$USER/.android/avd && export ANDROID_HOME=$ANDROID_SDK_ROOT && $ANDROID_HOME/emulator/emulator -avd test_device -skin 1080x1920 -memory 1024 -engine qemu2 -netfast -no-audio -no-snapshot -gpu auto
-          background: true
-      - run: 
-          name: Starting Emulator
-          command: |
-            adb wait-for-device
-            adb devices
-            echo "Emulator started"
-      - run: 
-          name: Starting Test
-          command: |
-            yarn android
+      - android/create-avd:
+          avd-name: myavd
+          install: true
+          system-image: system-images;android-29;default;x86
+      - android/start-emulator:
+          avd-name: myavd
+          no-window: true
+          restore-gradle-cache-prefix: v1a
+      - android/run-tests
+      - android/save-gradle-cache:
+          cache-prefix: v1a
 workflows:
-  version: 2
-  scheduled-workflow-android:
+  test:
     jobs:
-    - build
+      - test
