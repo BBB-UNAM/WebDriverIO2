@@ -40,9 +40,12 @@ jobs:
             mkdir ./android-sdk/platform-tools
             mkdir ./android-sdk/platforms
       - run:
+          name: acceptar licencia
+          command: |
+            yes | ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+      - run:
           name: install android emulator
           command: |
-            echo 'y' | ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
             echo 'y' | ./android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
             
       #- run: npm install android-platform-tools
