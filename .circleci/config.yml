@@ -38,7 +38,7 @@ jobs:
           command: |
             yarn install
             npx playwright install
-            npm install appium
+            npm install appium -g
             appium driver install uiautomator2
       - run: 
           name: Starting Test
