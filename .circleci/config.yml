@@ -16,7 +16,6 @@ jobs:
       - android/start-emulator:
           avd-name: myavd
           no-window: true
-          restore-gradle-cache-prefix: v1
       - run:
           name: Run Yarn Android
           command: yarn android
