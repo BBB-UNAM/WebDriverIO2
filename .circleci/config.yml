@@ -17,11 +17,12 @@ jobs:
           avd-name: myavd
           no-window: true
           restore-gradle-cache-prefix: v1a
-      - yarn install
+      - android/run-tests
       - android/save-gradle-cache:
           cache-prefix: v1a
 workflows:
   test:
     jobs:
       - test
+
 
