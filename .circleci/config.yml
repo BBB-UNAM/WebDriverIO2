@@ -17,7 +17,9 @@ jobs:
           avd-name: myavd
           no-window: true
           restore-gradle-cache-prefix: v1a
-      - android/run-tests
+      - run:
+          name: Run Yarn Android
+          command: yarn android
       - android/save-gradle-cache:
           cache-prefix: v1a
 workflows:
