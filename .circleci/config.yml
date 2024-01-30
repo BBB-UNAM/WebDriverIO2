@@ -43,6 +43,7 @@ jobs:
       - run:
           name: install android emulator
           command: |
+            yes | ./android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
             echo 'y' | ./android-sdk/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
             
       #- run: npm install android-platform-tools
