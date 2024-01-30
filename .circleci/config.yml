@@ -33,13 +33,11 @@ jobs:
           name: install android SDK
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
-            unzip commandlinetools-linux-11076708_latest.zip
-            mkdir ./${ANDROID_HOME}/cmdline-tools/latest
-            cd /${ANDROID_HOME}/cmdline-tools/latest
+            unzip commandlinetools-linux-11076708_latest.zip -d /usr/lib/android-sdk
       - run:
           name: install android emulator
           command: |
-            echo y | ./cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64" --sdk_root=cmdline-tools "cmdline-tools;latest"
+            echo y | ./${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
       - run:
           name: See sdkmanager options
           command: |
