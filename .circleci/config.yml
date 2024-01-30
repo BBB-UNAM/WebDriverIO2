@@ -34,10 +34,16 @@ jobs:
           command: |
             wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
             unzip commandlinetools-linux-11076708_latest.zip
+            mkdir ./android-sdk/cmdline-tools/latest
+            mv ./cmdline-tools/bin ./android-sdk/cmdline-tools/latest
+            mv ./cmdline-tools/lib ./android-sdk/cmdline-tools/latest
+            mv ./cmdline-tools/*.* ./android-sdk/cmdline-tools/latest
+            mkdir ./android-sdk/platform-tools
+            mkdir ./android-sdk/platforms 
       - run:
           name: install android emulator
           command: |
-            yes 'y' | ./cmdline-tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64" --sdk_root=cmdline-tools "cmdline-tools;latest"
+            yes 'y' | ./cmdline-tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64" --sdk_root=./android-sdk/cmdline-tools "cmdline-tools;latest"
             
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
