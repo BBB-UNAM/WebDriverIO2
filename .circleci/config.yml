@@ -45,7 +45,7 @@ jobs:
       - run:
           name: install android emulator
           command: |
-            yes 'y' | ./cmdline-tools/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64" --sdk_root=./android-sdk/cmdline-tools "cmdline-tools;latest"
+            yes 'y' | ./home/circleci/project/android-sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-30;google_apis;x86_64"
             
       #- run: npm install android-platform-tools
       #- run: sudo apt install openjdk-17-jdk
