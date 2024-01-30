@@ -39,7 +39,7 @@ jobs:
       - run:
           name: install android emulator
           command: |
-            echo y | .${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
+            sudo echo y | .${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --install "system-images;android-33;google_apis;x86_64"
             cd ${ANDROID_HOME}/cmdline-tools/bin/
             ls -l
       - run:
